@@ -1,6 +1,6 @@
 # DSV: Data Science Versioning
 
-Cli tool to manage Jupyter Notebooks
+Tool to manage Versioning in Data Science research
 
 # Use-Cases
 
