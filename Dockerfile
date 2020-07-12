@@ -6,17 +6,19 @@ RUN apt-get update && \
 
 ARG GITHUB_USER
 ARG GITHUB_TOKEN
-ARG DSGIT_CONFIGURATION_FILE
+ARG DSV_CONFIGURATION_FILE
 
 
 RUN echo "${GITHUB_USER}" \
     & echo "${GITHUB_TOKEN}" \
-    & echo "${DSGIT_CONFIGURATION_FILE}"
+    & echo "${DSV_CONFIGURATION_FILE}"
 
 ENV GITHUB_USER=$GITHUB_USER
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
-ENV DSGIT_CONFIGURATION_FILE=$DSGIT_CONFIGURATION_FILE
+ENV DSV_CONFIGURATION_FILE=$DSV_CONFIGURATION_FILE
 
+# packaging utilities
+RUN pip install --user --upgrade setuptools wheel
 
 
 COPY requirements.txt /tmp/python_engine/requirements.txt
@@ -26,10 +28,7 @@ RUN pip install -r /tmp/python_engine/requirements.txt
 # RUN mkdir /workspace
 WORKDIR /workspace
 USER root
-RUN chmod +x /workspace/dsgit/dsgit.py \
-    & echo 'export PATH=${PATH}:/workspace/dsgit/' >> ~/.bashrc \
-    & echo 'alias dsgit="dsgit.py"' >> ~/.bashrc
+RUN chmod +x /workspace/dsv/dsv.py \
+    & echo 'export PATH=${PATH}:/workspace/dsv/' >> ~/.bashrc \
+    & echo 'alias dsv="dsv.py"' >> ~/.bashrc
 # RUN source ~/.bashrc
-
-
-# RUN alias dsgit="python dsgit/dsgit.py"

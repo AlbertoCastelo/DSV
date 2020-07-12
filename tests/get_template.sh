@@ -2,10 +2,10 @@
 
 # test get template
 
-python dsgit/dsgit.py get_template ./tests
+python dsv/dsv.py get_template ./tests
 
 # this should work but does not
-# dsgit get_template ./tests
+# dsv get_template ./tests
 
 
 FILE=./tests/base-template.ipynb

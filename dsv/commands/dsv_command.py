@@ -3,11 +3,8 @@ import os
 import base64
 import json
 
-DS_REPO = 'data-science'
-TEMPLATE_FILENAME = 'templates/ds-template.ipynb'
 
-
-class DSGitCommand:
+class DSVCommand:
     def __init__(self):
         config = read_configuration(os.environ.get('DSGIT_CONFIGURATION_FILE', './dsgit_configuration.json'))
         
