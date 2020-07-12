@@ -1,6 +1,7 @@
 from github import Github
 import os
 import base64
+import json
 
 DS_REPO = 'data-science'
 TEMPLATE_FILENAME = 'templates/ds-template.ipynb'
@@ -54,6 +55,21 @@ def base64ToString(b):
     return base64.b64decode(b).decode('utf-8')
 
 
+BASE_CONFIGURATION_PATH = '/etc/opt/dsgit'
+BASE_CONFIGURATION = {
+    "repository": "dsgit",
+    "dsgit_template_filaname": "dsgit/base-template.ipynb"
+}
+
 def read_configuration(filename):
-    with open(filename) as json_file:
-        return json.load(json_file) 
+    if os.path.isfile(filename):
+        with open(filename) as json_file:
+            return json.load(json_file) 
+    
+    # create file
+    if not os.path.isdir(BASE_CONFIGURATION_PATH):
+        os.mkdir(BASE_CONFIGURATION_PATH)
+
+    with open(f'{BASE_CONFIGURATION_PATH}/dsgit_configuration.json', 'w') as json_file:
+        json.dump(BASE_CONFIGURATION, json_file)
+    return BASE_CONFIGURATION
