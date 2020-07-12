@@ -19,8 +19,11 @@ shell: build
 		$(IMAGE) /bin/bash
 	# cd docker && (docker-compose run --service-ports $(SERVICE) /bin/bash) ;
 
-# test: build
-# 	cd docker && (docker-compose run --service-ports $(SERVICE) /bin/bash scripts/run_tests.sh) ;
+test: build
+	docker run --rm -it --init \
+		--volume=$(PWD):/workspace \
+		--network=host \
+		$(IMAGE) sh /tests/get_template.sh
 
 
 create-networks:

@@ -7,7 +7,7 @@ DS_REPO = 'data-science'
 TEMPLATE_FILENAME = 'templates/ds-template.ipynb'
 
 
-class DSGit:
+class DSGitCommand:
     def __init__(self):
         config = read_configuration(os.environ.get('DSGIT_CONFIGURATION_FILE', './dsgit_configuration.json'))
         

@@ -1,7 +1,7 @@
 FROM python:3.7.8-slim
 
 RUN apt-get update && \
-    apt-get install -y libssl-dev gcc g++ git && \
+    apt-get install -y libssl-dev gcc g++ git nano&& \
     pip --no-cache-dir install --upgrade pip
 
 ARG GITHUB_USER
@@ -25,3 +25,11 @@ RUN pip install -r /tmp/python_engine/requirements.txt
 
 # RUN mkdir /workspace
 WORKDIR /workspace
+USER root
+RUN chmod +x /workspace/dsgit/dsgit.py \
+    & echo 'export PATH=${PATH}:/workspace/dsgit/' >> ~/.bashrc \
+    & echo 'alias dsgit="dsgit.py"' >> ~/.bashrc
+# RUN source ~/.bashrc
+
+
+# RUN alias dsgit="python dsgit/dsgit.py"
