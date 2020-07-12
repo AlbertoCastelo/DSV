@@ -17,7 +17,6 @@ shell: build
 		--volume=$(PWD):/workspace \
 		--network=host \
 		$(IMAGE) /bin/bash
-	# cd docker && (docker-compose run --service-ports $(SERVICE) /bin/bash) ;
 
 test: build
 	docker run --rm -it --init \
