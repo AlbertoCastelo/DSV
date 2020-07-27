@@ -6,23 +6,23 @@ from .utils import base64ToString
 
 class DSVCommand:
     def __init__(self):
-        config = read_configuration(os.environ.get('DSGIT_CONFIGURATION_FILE', './dsgit_configuration.json'))
-        
+        config = read_configuration(os.environ.get('DSGIT_CONFIGURATION_FILE', './dsv_configuration.json'))
+
         self.user = os.environ['GITHUB_USER']
         token = os.environ['GITHUB_TOKEN']
         self.g = Github(self.user, token)
-
+        
         # TO EXTRACT
         self.repo = config.get('repository')
-        self.template_filename = config.get('dsgit_template_filaname')
-
+        self.template_filename = config.get('dsv_template_filaname')
 
     def get_template(self, local_directory='./'):
-        self.download_file(repo=self.repo, repo_filename=self.template_filename, add_relativer_dir=False,
+        self.download_file(repo_name=self.repo, repo_filename=self.template_filename, add_relativer_dir=False,
                            local_directory=local_directory)
 
-    def download_file(self, repo, repo_filename, add_relativer_dir=True, local_directory='./'):
-        repo = self.g.get_repo(f'{self.user}/{repo}')
+    def download_file(self, repo_name, repo_filename, add_relativer_dir=True, local_directory='./'):
+        repo = self.g.get_repo(f'{self.user}/{repo_name}')
+        
         contents = repo.get_contents(repo_filename)
         str_ = base64ToString(contents.content)
 
