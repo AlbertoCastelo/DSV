@@ -4,13 +4,16 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="DSV", 
+    name="dsv", 
     version="0.0.1",
     author="Alberto Castelo",
     author_email="alberto.castelo.becerra@gmail.com",
     description="Versioning for Data Science",
     url="https://github.com/AlbertoCastelo/DSV",
-    packages=setuptools.find_packages(),
+    scripts=['./scripts/dsv'],
+    packages=['lib.dsv'],
+    # packages=setuptools.find_packages(),
+    install_requires=[],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

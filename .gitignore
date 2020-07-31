@@ -3,5 +3,7 @@ __pycache__
 build/*
 dist/*
 DSGit.egg-info/*
+dsv.egg-info/*
+DSV.egg-info/*
 
 .env

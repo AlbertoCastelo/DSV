@@ -28,7 +28,7 @@ RUN pip install -r /tmp/python_engine/requirements.txt
 # RUN mkdir /workspace
 WORKDIR /workspace
 USER root
-RUN chmod +x /workspace/dsv/dsv.py \
-    & echo 'export PATH=${PATH}:/workspace/dsv/' >> ~/.bashrc \
-    & echo 'alias dsv="dsv.py"' >> ~/.bashrc
+# RUN chmod +x /workspace/dsv/dsv.py \
+#     & echo 'export PATH=${PATH}:/workspace/dsv/' >> ~/.bashrc \
+#     & echo 'alias dsv="dsv.py"' >> ~/.bashrc
 # RUN source ~/.bashrc
