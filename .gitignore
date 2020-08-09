@@ -6,4 +6,5 @@ DSGit.egg-info/*
 dsv.egg-info/*
 DSV.egg-info/*
 
+.idea
 .env
