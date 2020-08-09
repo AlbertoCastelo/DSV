@@ -20,16 +20,20 @@ ENV DSV_CONFIGURATION_FILE=$DSV_CONFIGURATION_FILE
 # packaging utilities
 RUN pip install --user --upgrade setuptools wheel
 
+#COPY ./ /tmp/dsv/
+COPY requirements.txt /tmp/dsv/requirements.txt
+RUN pip install -r /tmp/dsv/requirements.txt
 
-COPY requirements.txt /tmp/python_engine/requirements.txt
-RUN pip install -r /tmp/python_engine/requirements.txt
+
 
 
 # RUN mkdir /workspace
 WORKDIR /workspace
-USER root
+#RUN echo $(ls /tmp/dsv/)
+#RUN python /tmp/dsv/setup.py install
+#USER root
 
-RUN python setup.py install
+RUN chmod 777 /workspace/
 # RUN chmod +x /workspace/dsv/__main__.py \
 #     & echo 'export PATH=${PATH}:/workspace/dsv/' >> ~/.bashrc \
 #     & echo 'alias dsv="__main__.py"' >> ~/.bashrc

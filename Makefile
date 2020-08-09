@@ -22,7 +22,7 @@ test: build
 	docker run --rm -it --init \
 		--volume=$(PWD):/workspace \
 		--network=host \
-		$(IMAGE) sh /tests/get_template.sh
+		$(IMAGE) sh ./scripts/run_tests.sh
 
 
 create-networks:
