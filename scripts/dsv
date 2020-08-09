@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # https://stackoverflow.com/questions/56534678/how-to-create-a-cli-in-python-that-can-be-installed-with-pip
-echo "here"
 if [[ ! $@ ]]; then
     python3 -m lib.dsv -h
 else

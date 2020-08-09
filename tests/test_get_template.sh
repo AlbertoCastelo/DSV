@@ -1,12 +1,8 @@
 #!/bin/sh
 
 # test get template
-
-python lib/dsv/dsv.py get_template ./tests
-
-# this should work but does not
-# dsv get_template ./tests
-
+# python lib/dsv/__main__.py get_template ./tests
+dsv get_template ./tests
 
 FILE=./tests/base-template.ipynb
 
