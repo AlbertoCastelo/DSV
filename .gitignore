@@ -5,6 +5,7 @@ dist/*
 DSGit.egg-info/*
 dsv.egg-info/*
 DSV.egg-info/*
+dsv.egg-info/*
 
 .idea
 .env
